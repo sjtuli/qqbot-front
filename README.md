@@ -7,7 +7,7 @@
 ****
 此项目基于模板项目<a href="https://github.com/sjtuli/uniapp-ts-windicss-pinia">uniapp-ts-windicss-pinia（当然也是我开源的）</a>开发，技术栈是 uniapp 、 tailwind、 pinia 
 ## 关于
-用爱发电，开发了Bot的小程序UI管理界面，目前已适配微信小程序和抖音小程序
+用爱发电，开发了Bot的小程序UI管理界面，目前已适配h5、微信小程序和抖音小程序
 
 如果该项目的图片等等侵犯老师权益请联系我删除！  
 
