@@ -7,11 +7,11 @@
 ****
 此项目基于模板项目<a href="https://github.com/sjtuli/uniapp-ts-windicss-pinia">uniapp-ts-windicss-pinia（当然也是我开源的）</a>开发，技术栈是 uniapp 、 tailwind、 pinia 
 ## 关于
-用爱发电，开发了Bot的小程序UI管理界面，目前已适配h5、微信小程序和抖音小程序
+用爱发电，开发了Bot的小程序UI管理界面，目前已适配微信小程序和抖音小程序
 
 如果该项目的图片等等侵犯老师权益请联系我删除！  
 
-如果希望有个地方讨论该Bot的UI，或者有问题或建议，可以发送issues或加入QQ群：892659456
+如果希望有个地方讨论该Bot的UI，或者有问题或建议，可以发送issues或加入QQ群：244566462
 
 ## 声明
 此项目仅用于学习交流，请勿用于非法用途
@@ -41,3 +41,8 @@ yarn build:mp-weixin
 
 ## 注意
 h5 只可用于dev模式调试，不可build，build会格式出现问题
+
+
+## 更新日志
+### 2022.9.3
+发布1.0
