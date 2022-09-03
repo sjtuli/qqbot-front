@@ -1,0 +1,117 @@
+{
+    "easycom": {
+    "autoscan": true,
+    "custom": {
+      // uni-ui 规则如下配置
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
+      "fui-(.*)": "@/components/firstui/fui-$1/fui-$1.vue"
+    }
+  },
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+        /* #ifndef MP-TOUTIAO */
+        "navigationStyle": "custom",
+				/* #endif */
+        /* #ifdef MP-TOUTIAO */
+        "navigationStyle": "default",
+				/* #endif */
+				"navigationBarTitleText": "星云设 Robot"
+			}
+		},
+    {
+      "path": "pages/collection/index",
+      "style": {
+        /* #ifndef MP-TOUTIAO */
+        "navigationStyle": "custom",
+				/* #endif */
+        /* #ifdef MP-TOUTIAO */
+        "navigationStyle": "default",
+				/* #endif */
+        				"navigationBarTitleText": "星云设 Robot"
+      }
+    },
+    {
+      "path": "pages/user/index",
+      "style": {
+        "enablePullDownRefresh": false,
+        /* #ifndef MP-TOUTIAO */
+        "navigationStyle": "custom",
+				/* #endif */
+        /* #ifdef MP-TOUTIAO */
+        "navigationStyle": "default",
+				/* #endif */
+      }
+    },    
+    {
+      "path": "pages/order/index",
+      "style": {
+				"navigationBarTitleText": "我的订单"
+      }
+    },
+        {
+      "path": "pages/groupManage/index",
+      "style": {
+				"navigationBarTitleText": "群组管理"
+      }
+    },        {
+      "path": "pages/menu/index",
+      "style": {
+				"navigationBarTitleText": "项目管理"
+      }
+    },
+            {
+      "path": "pages/experimence/index",
+      "style": {
+      "navigationBarTitleText":"体验群"
+        
+      }
+    }
+	],
+    "tabBar": {
+	"color": "#7A7E83",
+	"selectedColor": "#3cc51f",
+	"borderStyle": "black",
+	"backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath":"static/icon/shouye-3.png",
+        "selectedIconPath":"static/icon/shouye.png"
+        },      
+        {
+        "pagePath": "pages/collection/index",
+        "text": "授权",
+        "iconPath":"static/icon/fenlei-2.png",
+        "selectedIconPath":"static/icon/fenlei.png"
+        },      
+        {
+        "pagePath": "pages/user/index",
+        "text": "我的",
+        "iconPath":"static/icon/wode-2.png",
+        "selectedIconPath":"static/icon/wode.png"
+        }
+    ]
+  },
+  "condition": { //模式配置，仅开发期间生效
+	"current": 0, //当前激活的模式（list 的索引项）
+	"list": [{
+			"name": "index", //模式名称
+			"path": "pages/inde/index", //启动页面，必选
+			"query": "interval=4000&autoplay=false" //启动参数，在页面的onLoad函数里面得到。
+		},
+		{
+			"name": "test",
+			"path": "pages/component/switch/switch"
+		}
+	]
+},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
