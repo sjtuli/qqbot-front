@@ -1,16 +1,9 @@
-
 <script setup lang="ts">
-import { reactive } from "vue";
 import tabBar from '@/components/tab-bar.vue'
-
-
-
 </script>
+
 <template>
-  <tab-bar></tab-bar>
-</template> 
+  <tab-bar />
+</template>
 
-
-
-<style lang="scss">
-</style>
+<style lang="scss"></style>

@@ -1,7 +1,5 @@
-
-
 <script lang="ts" setup>
-import { ref, reactive, watch, onBeforeMount, onMounted, nextTick } from 'vue';
+import { nextTick, onMounted, reactive } from 'vue'
 
 const props = defineProps(['pagePath'])
 const state = reactive({
@@ -13,9 +11,9 @@ const menuList = [
   { icon: 'icon-tab_icon_mine_nor', label: '我的', url: '/pages/user/index' },
 ]
 
-const route = (item, i) => {
+function route(item: { url: any }, i: any) {
   uni.switchTab({
-    url: item.url
+    url: item.url,
   })
   // changeRoute()
   // if (type === 'collection') {
@@ -29,10 +27,10 @@ const route = (item, i) => {
   //     emits('changeRoute', 'user')
   // }
 }
-const changeRoute = () => {
+function changeRoute() {
   nextTick(() => {
-    let routes = getCurrentPages(); // 获取当前打开过的页面路由数组
-    let curRoute = routes[routes.length - 1].route // 获取当前页面路由，也就是最后一个打开的页面路由
+    const routes = getCurrentPages() // 获取当前打开过的页面路由数组
+    const curRoute = routes[routes.length - 1].route // 获取当前页面路由，也就是最后一个打开的页面路由
     console.log(curRoute)
     for (let i = 0; i < menuList.length; i++) {
       if (curRoute === menuList[i].url) {
@@ -54,15 +52,23 @@ onMounted(() => {
 <template>
   <view class="h-30">
     <view class="bg-white flex rounded-t-2xl w-full bottom-0 content fixed">
-      <button class="flex flex-col text-gray-300 w-1/3 clear-btn justify-evenly items-center"
-              v-for="(item, i) of menuList"
-              :key="i">
+      <button
+        v-for="(item, i) of menuList"
+        :key="i"
+        class="flex flex-col text-gray-300 w-1/3 clear-btn justify-evenly items-center"
+      >
         <view class="flex  items-center justify-center ">
-          <text class="text-2xl iconfont"
-                :class="[item.icon, { 'selected': props.pagePath === item.url }]"></text>
+          <text
+            class="text-2xl iconfont"
+            :class="[item.icon, { selected: props.pagePath === item.url }]"
+          />
         </view>
-        <view class="text-base leading-normal"
-              :class="{ 'text-purple-600': props.pagePath === item.url }">{{ item.label }}</view>
+        <view
+          class="text-base leading-normal"
+          :class="{ 'text-purple-600': props.pagePath === item.url }"
+        >
+          {{ item.label }}
+        </view>
       </button>
     </view>
   </view>

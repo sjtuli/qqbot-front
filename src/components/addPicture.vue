@@ -1,93 +1,96 @@
-<template>
-  <shmily-drag-image ref="dragImage"
-                     v-model:list="list"
-                     :custom="true"
-                     @addImage=""
-                     :imageWidth=200
-                     :number="props.number" />
-</template>
-
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, watch } from 'vue'
+
 // import { savePicture, chooseImg } from "@/api/picture";
-import shmilyDragImage from "@/components/shmily-drag-image.vue";
-import { watch } from 'vue';
+import shmilyDragImage from '@/components/shmily-drag-image.vue'
 
 const props = defineProps({
   list: {
     type: Array,
-    default: []
+    default: [],
   },
   number: {
     type: Number,
-    default: 6
-  }
+    default: 6,
+  },
 })
 
-let list = ref([
+const emit = defineEmits(['update:list'])
+
+const list = ref([
   {
-    "pictureLink": "https://s1-1309644651.cos.ap-shanghai.myqcloud.com/wxFile/static/pic1.webp",
-  }, {
-    "pictureLink": "https://s1-1309644651.cos.ap-shanghai.myqcloud.com/wxFile/static/pic1.webp",
-  }, {
-    "pictureLink": "https://s1-1309644651.cos.ap-shanghai.myqcloud.com/wxFile/static/pic1.webp",
-  }
+    pictureLink: 'https://s1-1309644651.cos.ap-shanghai.myqcloud.com/wxFile/static/pic1.webp',
+  },
+  {
+    pictureLink: 'https://s1-1309644651.cos.ap-shanghai.myqcloud.com/wxFile/static/pic1.webp',
+  },
+  {
+    pictureLink: 'https://s1-1309644651.cos.ap-shanghai.myqcloud.com/wxFile/static/pic1.webp',
+  },
 ])
 
-const emit = defineEmits(["update:list"]);
-watch(list, (newVal, oldVal) => {
-  console.log(newVal, "更新list")
-  emit('update:list', newVal)
-}, { immediate: true, deep: true })
+watch(
+  list,
+  (newVal, oldVal) => {
+    console.log(newVal, '更新list')
+    emit('update:list', newVal)
+  },
+  { immediate: true, deep: true },
+)
 
-let dragImage = ref(null)
-let worksContent = ref([])
+const dragImage = ref(null)
+const worksContent = ref([])
 
-
-const orderImg = () => {
+function orderImg() {
   return new Promise((resolve, reject) => {
-    let data = []
+    const data = []
     worksContent.value = []
     list.value.map((item, index) => {
       data.push({
         pictureLink: item.pictureLink,
-      });
+      })
     })
     // console.log(data, "看看data怎么样")
     if (data.length > 0) {
-      saveImg(data).then(res => {
-        resolve(res)
-      }).catch(e => {
-        reject(e)
-      })
-    } else {
+      saveImg(data)
+        .then((res) => {
+          resolve(res)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    }
+    else {
       resolve([])
     }
   })
 }
 
-
 defineExpose({
   list,
-  worksContent
-});
+  worksContent,
+})
 </script>
 
-<style lang="scss" scoped>
-.add {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 400 rpx;
+<template>
+  <shmily-drag-image ref="dragImage" v-model:list="list" :custom="true" :image-width="200" :number="props.number" @addImage="" />
+</template>
 
-  .add-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #eeeeee;
-    width: 200 rpx;
-    height: 200 rpx
-  }
-}
+<style lang="scss" scoped>
+	.add {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 400 rpx;
+
+		.add-wrap {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #eeeeee;
+			width: 200 rpx;
+			height: 200 rpx;
+		}
+	}
 </style>
